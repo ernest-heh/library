@@ -41,18 +41,27 @@ function addBook() {
   renderBooks();
 }
 
+function removeBook(index) {
+  myLibrary.splice(index, 1);
+  renderBooks();
+}
+
 function renderBooks() {
   let libraryEl = document.querySelector("#library");
   libraryEl.innerHTML = "";
   for (let i = 0; i < myLibrary.length; i++) {
     let book = myLibrary[i];
     let bookEl = document.createElement("div");
+    bookEl.classList.add("card");
     bookEl.innerHTML = `
-    <div class="card">
+    <div class="book-info">
       <img class="book-cover" src="${book.coverImg}">
       <h3>${book.title}</h3>
       <p>${book.author}</p>
       <p class="book-status">${book.isRead ? "Read" : "Not Read Yet"}</p>
+    </div>
+    <div class="book-remove">
+      <button class="book-remove-btn" onclick="removeBook(${i})">Remove From Library</button>
     </div>
     `;
     console.log(bookEl);
