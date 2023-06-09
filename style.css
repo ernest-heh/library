@@ -4,8 +4,8 @@
   /* font-size: 16px; */
   --primary: rgb(50, 50, 50);
   --primarydark: rgb(25, 25, 25);
-  --secondary: rgb(120, 120, 120);
-  --secondarydark: rgb(90, 90, 90);
+  --secondary: rgb(204, 204, 204);
+  --secondarydark: rgb(175, 175, 175);
   --accent: rgb(255, 121, 26);
   --accentdark: rgb(213, 89, 0);
 }
@@ -22,6 +22,7 @@
 
 body {
   font-family: "Inter", sans-serif;
+  background: var(--secondary);
 }
 
 h1,
@@ -40,7 +41,7 @@ input {
 }
 
 .container {
-  margin: 2rem auto 0;
+  margin: 2rem auto 4rem;
   max-width: 1200px;
   padding: 0 2rem;
 }
@@ -52,6 +53,28 @@ header {
 .header-input {
   margin-top: 1rem;
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-input label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.header-input input {
+  padding: 8px 10px;
+  border: 1px solid var(--secondary);
+  border-radius: 4px;
+}
+
+button {
+  padding: 0.3rem 0.6rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: var(--secondary);
+  cursor: pointer;
 }
 
 label,
@@ -59,16 +82,39 @@ input {
   display: block;
 }
 
-dialog {
-  display: flex;
-  position: absolute;
-  top: 30px;
-  padding: 1rem;
-  border: none;
+button#add-book {
+  font-size: 1.2rem;
+  background: var(--accent);
 }
 
-#add-book-dialog {
+[data-modal] {
+  /* display: flex; */
+  /* position: absolute; */
+  /* top: 0; */
+  /* left: 100px; */
+  padding: 1rem;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  box-shadow: 4px 12px 32px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+[data-modal]::backdrop {
+  background: rgba(25, 25, 25, 0.4);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* #add-book-dialog {
   display: none;
+} */
+
+#form-close {
+  font-size: 2rem;
+  font-weight: 200;
+  cursor: pointer;
 }
 
 .book-cover {
@@ -77,8 +123,8 @@ dialog {
 
 #library {
   display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fill, 250px);
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, 200px);
 }
 
 .card {
@@ -87,9 +133,10 @@ dialog {
   flex-direction: column;
   justify-content: space-between;
   gap: 1.5rem;
-  width: 240px;
+  width: 200px;
   border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background: white;
+  /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); */
 }
 
 .card img {
@@ -99,7 +146,7 @@ dialog {
 .card h3 {
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--primary);
+  border-bottom: 1px solid var(--secondary);
 }
 
 .book-remove-btn {

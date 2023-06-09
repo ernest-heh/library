@@ -1,25 +1,25 @@
 let myLibrary = [
-  {
-    title: "Atomic Habits",
-    author: "James Clear",
-    isbn: "1847941834",
-    isRead: false,
-    coverImg: `https://covers.openlibrary.org/b/isbn/1847941834-M.jpg`,
-  },
-  {
-    title: "The Psychology of Money",
-    author: "Morgan Housel",
-    isbn: "0857197681",
-    isRead: false,
-    coverImg: `https://covers.openlibrary.org/b/isbn/0857197681-M.jpg`,
-  },
-  {
-    title: "Ikigai: Simple Secrets to a Long and Happy Life",
-    author: "Héctor García",
-    isbn: "1529902401",
-    isRead: false,
-    coverImg: `https://covers.openlibrary.org/b/isbn/1529902401-M.jpg`,
-  },
+  // {
+  //   title: "Atomic Habits",
+  //   author: "James Clear",
+  //   isbn: "1847941834",
+  //   isRead: true,
+  //   coverImg: `https://covers.openlibrary.org/b/isbn/1847941834-M.jpg`,
+  // },
+  // {
+  //   title: "The Psychology of Money",
+  //   author: "Morgan Housel",
+  //   isbn: "0857197681",
+  //   isRead: false,
+  //   coverImg: `https://covers.openlibrary.org/b/isbn/0857197681-M.jpg`,
+  // },
+  // {
+  //   title: "Ikigai: Simple Secrets to a Long and Happy Life",
+  //   author: "Héctor García",
+  //   isbn: "1529902401",
+  //   isRead: false,
+  //   coverImg: `https://covers.openlibrary.org/b/isbn/1529902401-M.jpg`,
+  // },
 ];
 
 function Book(title, author, isbn, isRead = false) {
@@ -28,6 +28,15 @@ function Book(title, author, isbn, isRead = false) {
   this.isbn = isbn;
   this.isRead = isRead;
   this.coverImg = `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`;
+}
+
+Book.prototype.toggleRead = function () {
+  this.isRead = !this.isRead;
+};
+
+function toggleRead(index) {
+  myLibrary[index].toggleRead();
+  renderBooks();
 }
 
 function addBook() {
@@ -59,6 +68,7 @@ function renderBooks() {
       <h3>${book.title}</h3>
       <p>${book.author}</p>
       <p class="book-status">${book.isRead ? "Read" : "Not Read Yet"}</p>
+      <button onclick="toggleRead(${i})">Toggle Read</button>
     </div>
     <div class="book-remove">
       <button class="book-remove-btn" onclick="removeBook(${i})">Remove From Library</button>
@@ -68,34 +78,78 @@ function renderBooks() {
     libraryEl.appendChild(bookEl);
   }
 }
-renderBooks();
 
-// const book1 = new Book("Atomic Habits", "James Clear", "1847941834");
-// const book2 = new Book(
-//   "The Psychology of Money",
-//   "Morgan Housel",
-//   "0857197681"
-// );
-// const book3 = new Book("Chip War", "Chris Miller", "1398504106");
+const book1 = new Book("Atomic Habits", "James Clear", "1847941834");
+const book2 = new Book(
+  "Dieter Rams, The Complete Works",
+  "Klaus Klemp",
+  "1838661530"
+);
+const book3 = new Book(
+  "The Psychology of Money",
+  "Morgan Housel",
+  "0857197681"
+);
+const book4 = new Book(
+  "The Creative Act: A Way of Being",
+  "Rick Rubin",
+  "0593652886"
+);
+const book5 = new Book(
+  "Dieter Rams: Ten Principles for Good Design",
+  "Cees W. De Jong",
+  "3791387324"
+);
+const book6 = new Book(
+  "Super Normal: Sensations of the Ordinary",
+  "Naoto Fukasawa",
+  "3037781068"
+);
+const book7 = new Book(
+  "User Friendly: How the Hidden Rules of Design Are Changing the Way We Live, Work, and Play",
+  "Cliff Kuang",
+  "0374279756"
+);
+const book8 = new Book(
+  "The Design Of Everyday Things",
+  "Don Norman",
+  "9780465050659"
+);
 
+myLibrary.push(book1, book2, book3, book4, book5, book6, book7, book8);
 // myLibrary.forEach((book) => {
 //   const node = document.createElement("div");
 // });
+renderBooks();
 
-const newBookBtn = document.querySelector("#add-book");
-const newBookDialog = document.querySelector("#add-book-dialog");
-const newBookForm = document.querySelector("#add-book-form");
+// const newBookBtn = document.querySelector("#add-book");
+// const newBookDialog = document.querySelector("#add-book-dialog");
 
-newBookBtn.addEventListener("click", () => {
-  newBookDialog.style.display = "block";
-});
+// newBookBtn.addEventListener("click", () => {
+//   newBookDialog.style.display = "block";
+// });
 
 const closeFormBtn = document.querySelector("#form-close");
-closeFormBtn.addEventListener("click", () => {
+closeFormBtn.addEventListener("click", (e) => {
+  e.preventDefault();
   newBookDialog.style.display = "none";
 });
 
+const newBookForm = document.querySelector("#add-book-form");
 newBookForm.addEventListener("submit", (e) => {
   e.preventDefault();
   addBook();
+  // newBookDialog.style.display = "none";
+});
+
+const openButton = document.querySelector("[data-open-modal]");
+const closeButton = document.querySelector("[data-close-modal]");
+const modal = document.querySelector("[data-modal]");
+
+openButton.addEventListener("click", () => {
+  modal.show();
+});
+
+closeButton.addEventListener("click", () => {
+  modal.close();
 });

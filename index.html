@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Library</title>
+    <title>Bookshelf</title>
 
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
@@ -12,16 +12,18 @@
   <body>
     <div class="container">
       <header>
-        <h1>Welcome to your Library</h1>
+        <h1>Welcome to your Bookshelf</h1>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem
           sed ipsum, quasi enim laudantium, nobis nisi recusandae officiis
           voluptates quis fugit doloribus earum perspiciatis. Veniam, dolores?
           Repudiandae aut libero incidunt.
         </p>
+
         <div class="header-input">
-          <button id="add-book">Add Book</button>
-          <dialog id="add-book-dialog">
+          <button id="add-book" data-open-modal>&plus;</button>
+          <label>Add a new Book</label>
+          <dialog id="add-book-dialog" data-modal>
             <form id="add-book-form" action="">
               <div class="form-input">
                 <label for="title">Title</label>
@@ -42,7 +44,7 @@
               <div class="form-input">
                 <button type="submit">Add</button>
               </div>
-              <a id="form-close">&CircleTimes;</a>
+              <a id="form-close" data-close-modal>&times;</a>
             </form>
           </dialog>
         </div>
