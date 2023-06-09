@@ -30,8 +30,8 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: "DM Mono", monospace;
-  font-weight: 500;
+  /* font-family: "DM Mono", monospace; */
+  font-weight: 650;
 }
 
 button,
@@ -122,6 +122,16 @@ button#add-book {
   gap: 1rem;
 }
 
+#add-book-form label {
+  margin-bottom: 0.3rem;
+}
+
+.form-footer {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
 #form-close {
   font-size: 2rem;
   font-weight: 200;
@@ -143,7 +153,7 @@ button#add-book {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 1rem;
   width: 200px;
   border-radius: 8px;
   background: white;
@@ -151,15 +161,27 @@ button#add-book {
 }
 
 .card img {
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.4rem;
 }
 
-.card h3 {
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
+.book-author {
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 0.35rem;
+}
+
+.book-info {
+  padding-bottom: 0.7rem;
   border-bottom: 1px solid var(--secondary);
 }
 
-.book-remove-btn {
-  width: 100%;
+.book-btns {
+  display: flex;
+  justify-content: space-between;
+}
+.book-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
 }

@@ -42,13 +42,18 @@ function renderBooks() {
     bookEl.innerHTML = `
     <div class="book-info">
       <img class="book-cover" src="${book.coverImg}">
-      <h3>${book.title}</h3>
-      <p>${book.author}</p>
-      <p class="book-status">${book.isRead ? "Read" : "Not Read Yet"}</p>
-      <button onclick="toggleRead(${i})">Toggle Read</button>
+      <h3 class="book-title">${book.title}</h3>
+      <p class="book-author">by ${book.author}</p>
     </div>
-    <div class="book-remove">
-      <button class="book-remove-btn" onclick="removeBook(${i})">Remove From Library</button>
+    <div class="book-btns">
+      <button class="book-btn" onclick="toggleRead(${i})">${
+      book.isRead
+        ? "<span class='material-symbols-outlined'>done</span> Read"
+        : "Unread"
+    }</button>
+      <button class="book-btn" onclick="removeBook(${i})"><span class="material-symbols-outlined">
+      delete
+      </span></button>
     </div>
     `;
     console.log(bookEl);
@@ -56,7 +61,7 @@ function renderBooks() {
   }
 }
 
-const book1 = new Book("Atomic Habits", "James Clear", "1847941834");
+const book1 = new Book("Atomic Habits", "James Clear", "1847941834", true);
 const book2 = new Book(
   "Dieter Rams, The Complete Works",
   "Klaus Klemp",
@@ -70,7 +75,8 @@ const book3 = new Book(
 const book4 = new Book(
   "The Creative Act: A Way of Being",
   "Rick Rubin",
-  "0593652886"
+  "0593652886",
+  true
 );
 const book5 = new Book(
   "Dieter Rams: Ten Principles for Good Design",
@@ -82,11 +88,7 @@ const book6 = new Book(
   "Naoto Fukasawa",
   "3037781068"
 );
-const book7 = new Book(
-  "User Friendly: How the Hidden Rules of Design Are Changing the Way We Live, Work, and Play",
-  "Cliff Kuang",
-  "0374279756"
-);
+const book7 = new Book("Inward", "Yung Pueblo", "1449495753");
 const book8 = new Book(
   "The Design Of Everyday Things",
   "Don Norman",

@@ -7,6 +7,10 @@
     <title>Bookshelf</title>
 
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,200"
+    />
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -38,13 +42,13 @@
                 <input type="text" id="isbn" />
               </div>
               <div class="form-input">
-                <label for="is-read">Read</label>
+                <label for="is-read">Have You Read It?</label>
                 <input type="checkbox" id="is-read" />
               </div>
-              <div class="form-input">
-                <button type="submit">Add</button>
+              <div class="form-footer">
+                <button type="submit">Add Book</button>
+                <a id="form-close" data-close-modal>&times;</a>
               </div>
-              <a id="form-close" data-close-modal>&times;</a>
             </form>
           </dialog>
         </div>
