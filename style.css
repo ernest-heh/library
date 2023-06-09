@@ -113,8 +113,8 @@ button#add-book {
 
 [data-modal]::backdrop {
   background: rgba(25, 25, 25, 0.4);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
 }
 
 #add-book-form {
