@@ -48,8 +48,8 @@ function renderBooks() {
     <div class="book-btns">
       <button class="book-btn" onclick="toggleRead(${i})">${
       book.isRead
-        ? "<span class='material-symbols-outlined'>done</span> Read"
-        : "Unread"
+        ? "<span class='material-symbols-outlined'>check_box</span> Read"
+        : "<span class='material-symbols-outlined'>check_box_outline_blank</span> Unread"
     }</button>
       <button class="book-btn" onclick="removeBook(${i})"><span class="material-symbols-outlined">
       delete
