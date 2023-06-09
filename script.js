@@ -1,26 +1,4 @@
-let myLibrary = [
-  // {
-  //   title: "Atomic Habits",
-  //   author: "James Clear",
-  //   isbn: "1847941834",
-  //   isRead: true,
-  //   coverImg: `https://covers.openlibrary.org/b/isbn/1847941834-M.jpg`,
-  // },
-  // {
-  //   title: "The Psychology of Money",
-  //   author: "Morgan Housel",
-  //   isbn: "0857197681",
-  //   isRead: false,
-  //   coverImg: `https://covers.openlibrary.org/b/isbn/0857197681-M.jpg`,
-  // },
-  // {
-  //   title: "Ikigai: Simple Secrets to a Long and Happy Life",
-  //   author: "Héctor García",
-  //   isbn: "1529902401",
-  //   isRead: false,
-  //   coverImg: `https://covers.openlibrary.org/b/isbn/1529902401-M.jpg`,
-  // },
-];
+let myLibrary = [];
 
 function Book(title, author, isbn, isRead = false) {
   this.title = title;
@@ -46,7 +24,6 @@ function addBook() {
   let isRead = document.querySelector("#is-read").checked;
   let newBook = new Book(title, author, isbn, isRead);
   myLibrary.push(newBook);
-  // console.log(myLibrary);
   renderBooks();
 }
 
@@ -117,17 +94,7 @@ const book8 = new Book(
 );
 
 myLibrary.push(book1, book2, book3, book4, book5, book6, book7, book8);
-// myLibrary.forEach((book) => {
-//   const node = document.createElement("div");
-// });
 renderBooks();
-
-// const newBookBtn = document.querySelector("#add-book");
-// const newBookDialog = document.querySelector("#add-book-dialog");
-
-// newBookBtn.addEventListener("click", () => {
-//   newBookDialog.style.display = "block";
-// });
 
 const closeFormBtn = document.querySelector("#form-close");
 closeFormBtn.addEventListener("click", (e) => {
@@ -139,7 +106,7 @@ const newBookForm = document.querySelector("#add-book-form");
 newBookForm.addEventListener("submit", (e) => {
   e.preventDefault();
   addBook();
-  // newBookDialog.style.display = "none";
+  modal.close();
 });
 
 const openButton = document.querySelector("[data-open-modal]");
@@ -147,9 +114,21 @@ const closeButton = document.querySelector("[data-close-modal]");
 const modal = document.querySelector("[data-modal]");
 
 openButton.addEventListener("click", () => {
-  modal.show();
+  modal.showModal();
 });
 
 closeButton.addEventListener("click", () => {
   modal.close();
+});
+
+modal.addEventListener("click", (e) => {
+  const dialogDimensions = modal.getBoundingClientRect();
+  if (
+    e.clientX < dialogDimensions.left ||
+    e.clientX > dialogDimensions.right ||
+    e.clientY < dialogDimensions.top ||
+    e.clientY > dialogDimensions.bottom
+  ) {
+    modal.close();
+  }
 });
