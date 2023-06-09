@@ -92,13 +92,23 @@ button#add-book {
   /* position: absolute; */
   /* top: 0; */
   /* left: 100px; */
+  width: 300px;
   padding: 1rem;
   border: none;
   border-top: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 8px;
   box-shadow: 4px 12px 32px rgba(0, 0, 0, 0.4);
-  background: rgba(255, 255, 255, 0.4);
+  /* background: rgba(255, 255, 255, 0.4); */
   backdrop-filter: blur(10px);
+  margin: auto;
+}
+
+[data-modal] input[type="text"] {
+  width: 100%;
+}
+[data-modal] input[type="checkbox"] {
+  width: 1.3rem;
+  height: 1.3rem;
 }
 
 [data-modal]::backdrop {
@@ -107,9 +117,10 @@ button#add-book {
   -webkit-backdrop-filter: blur(2px);
 }
 
-/* #add-book-dialog {
-  display: none;
-} */
+#add-book-form {
+  display: grid;
+  gap: 1rem;
+}
 
 #form-close {
   font-size: 2rem;
